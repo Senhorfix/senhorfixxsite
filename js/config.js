@@ -10,7 +10,7 @@ const CONFIG = {
   // NÚMERO DO WHATSAPP
   // Formato: 55 (Brasil) + DDD + número, tudo junto, sem espaços,
   // traços ou parênteses. Ex.: (99) 98183-1886 → '5599981831886'
-  whatsapp: '5599981831886',
+  whatsapp: '5599984771332',
 
   // DESCONTO NO PIX / À VISTA
   // 0.12 = 12% de desconto sobre o preço exibido no card.
