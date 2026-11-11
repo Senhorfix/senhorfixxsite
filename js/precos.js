@@ -334,5 +334,6 @@ const MODELOS = [
   { modelo: '17',
     tela:           { premium: { parcelado: 1499.00, pix: 1300.00 } } },
   { modelo: '17 Pro' },   // sem preços cadastrados: tudo sob consulta
-  { modelo: '17 Pro Max' },   // sem preços cadastrados: tudo sob consulta
+  { modelo: '17 Pro Max',
+   tela:           { premium: 1899.90 } },   // sem preços cadastrados: tudo sob consulta
 ];
