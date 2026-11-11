@@ -1,0 +1,1229 @@
+/* =============================================================
+   SENHOR FIX — ESTILO DO SITE
+   -------------------------------------------------------------
+   COMO USAR ESTE ARQUIVO
+   • Para trocar CORES, FONTE ou LARGURA do site, mude só a
+     seção "CONFIGURAÇÕES" logo abaixo. A mudança vale para o
+     site inteiro.
+   • Mais abaixo, cada parte do site tem seu bloco, na mesma
+     ordem em que aparece na página (cabeçalho, abertura,
+     benefícios, preços, diferenciais, endereço, rodapé).
+   • O bloco "CELULAR" no final ajusta o site para telas pequenas.
+   ============================================================= */
+
+
+/* =============================================================
+   CONFIGURAÇÕES (cores, fonte e medidas principais)
+   ============================================================= */
+:root {
+  /* --- Cores da marca --- */
+  --cor-principal:      #1256c8; /* azul: botões, destaques, logo */
+  --cor-texto:          #101d34; /* azul-marinho dos textos */
+  --cor-texto-suave:    #627085; /* cinza dos textos secundários */
+  --cor-borda:          #e3eaf4; /* linhas e bordas finas */
+  --cor-fundo-claro:    #f5f8fd; /* fundo da seção de preços */
+  --cor-fundo-icone:    #ebf2ff; /* fundo azul-clarinho dos ícones */
+  --cor-whatsapp:       #128049; /* botão verde flutuante (antes #17aa61, escurecido para leitura) */
+  --cor-urgente:        #c2410c; /* laranja do botão "Reparo urgente" */
+
+  /* --- Seção azul-escura do endereço e rodapé --- */
+  --cor-fundo-escuro:   #0d2148; /* faixa "Seu próximo reparo começa aqui" */
+  --cor-texto-escuro:   #c6d4ef; /* texto claro sobre a faixa escura */
+  --cor-destaque-escuro:#92b8ff; /* "ESTAMOS EM IMPERATRIZ" */
+  --cor-rodape:         #081831; /* fundo do rodapé */
+  --cor-texto-rodape:   #a8bedf; /* texto do rodapé */
+
+  /* --- Fonte --- */
+  --fonte-principal: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* --- Medidas --- */
+  --largura-maxima: 1120px; /* largura máxima do conteúdo */
+  --margem-lateral: 22px;   /* espaço nas laterais da tela */
+  --raio-botao:     12px;   /* arredondamento dos botões */
+}
+
+
+/* =============================================================
+   BASE (regras gerais da página)
+   ============================================================= */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; } /* rolagem suave ao clicar no menu */
+
+/* Quem configurou o aparelho para reduzir animações não recebe rolagem suave */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Ao clicar no menu, o título da seção não fica escondido atrás do cabeçalho fixo */
+section[id] { scroll-margin-top: 76px; }
+
+/* Contorno visível em quem navega pelo teclado (tecla Tab) */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #7aa7f0;
+  outline-offset: 2px;
+}
+
+body {
+  margin: 0;
+  color: var(--cor-texto);
+  font-family: var(--fonte-principal);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Caixa que centraliza o conteúdo e limita a largura */
+.wrap {
+  max-width: var(--largura-maxima);
+  margin: auto;
+  padding: 0 var(--margem-lateral);
+}
+
+
+/* =============================================================
+   BOTÕES
+   .btn          → botão azul cheio
+   .btn.outline  → botão branco com borda azul
+   ============================================================= */
+button,
+.btn {
+  border: 0;
+  border-radius: var(--raio-botao);
+  padding: 15px 20px;
+  background: var(--cor-principal);
+  color: white;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn.outline {
+  background: white;
+  color: var(--cor-principal);
+  border: 1px solid #b5c8eb;
+}
+
+
+/* =============================================================
+   TEXTOS REUTILIZADOS
+   ============================================================= */
+
+/* Textinho em MAIÚSCULAS azul acima dos títulos */
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--cor-principal);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* Versão clara, usada na faixa azul-escura */
+.eyebrow--claro { color: var(--cor-destaque-escuro); }
+
+/* Trecho de título pintado de azul */
+.destaque { color: var(--cor-principal); }
+
+.center { text-align: center; }
+
+.section-title {
+  font-size: clamp(29px, 4vw, 42px);
+  letter-spacing: -1.2px;
+  margin: 11px 0 13px;
+}
+
+.sub {
+  color: var(--cor-texto-suave);
+  line-height: 1.7;
+}
+
+/* Espaço padrão de cima e de baixo de cada seção */
+section { padding: 84px 0; }
+
+
+/* =============================================================
+   CABEÇALHO
+   ============================================================= */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #ffffffed; /* branco levemente transparente */
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+header .wrap {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* LOGO (imagem). Para deixar maior ou menor, mude a altura. */
+.logo { display: block; flex-shrink: 0; }
+
+.logo img {
+  display: block;
+  height: 46px;
+  width: auto;
+}
+
+nav {
+  display: flex;
+  gap: 24px;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+/* Grupo da direita: botão de orçamento + botão ☰ */
+.header-acoes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Textos que mudam entre computador e celular */
+.so-celular { display: none; }
+
+/* Botão ☰ do menu — escondido no computador */
+.botao-menu {
+  display: none;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  background: white;
+  border: 1px solid #b5c8eb;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* As três linhas do ☰ */
+.botao-menu span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--cor-principal);
+  border-radius: 2px;
+  transition: transform .2s, opacity .2s;
+}
+
+/* Menu aberto: o ☰ vira um X */
+.botao-menu[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.botao-menu[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.botao-menu[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+
+/* =============================================================
+   1. ABERTURA (HERO)
+   ============================================================= */
+.hero {
+  background: linear-gradient(135deg, #f4f8ff, white);
+  padding: 90px 0 80px;
+}
+
+/* Duas colunas: texto à esquerda, ilustração à direita */
+.hero .wrap {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: clamp(36px, 5vw, 62px);
+  letter-spacing: -2.2px;
+  line-height: 1.06;
+  margin: 20px 0;
+}
+
+.hero p {
+  font-size: 18px;
+  color: var(--cor-texto-suave);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+/* Grupo de botões da abertura */
+.cta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 27px;
+}
+
+/* --- Botão laranja "⚡ Reparo urgente" --- */
+.btn-urgente { background: var(--cor-urgente); }
+
+/* --- Ilustração do celular (feita só com CSS) --- */
+.hero-art {
+  min-height: 335px;
+  border-radius: 32px;
+  background: radial-gradient(circle at 60% 35%, #377fea, #0d3075);
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Corpo do celular */
+.phone {
+  width: 164px;
+  height: 290px;
+  background: #101520;
+  border: 8px solid #15233b;
+  outline: 2px solid #a8bee3;
+  border-radius: 34px;
+  transform: rotate(-12deg);
+  box-shadow: 26px 28px 40px #071c4d66;
+  position: relative;
+}
+
+/* Tela do celular */
+.phone:before {
+  content: '';
+  position: absolute;
+  inset: 9px;
+  border-radius: 22px;
+  background: linear-gradient(150deg, #1a79ff, #080e46 65%, #040825);
+}
+
+/* "Notch" (recorte da câmera) */
+.phone:after {
+  content: '';
+  position: absolute;
+  left: 52px;
+  top: 8px;
+  width: 45px;
+  height: 12px;
+  border-radius: 10px;
+  background: #000;
+}
+
+/* Estrelinha ✦ */
+.spark {
+  position: absolute;
+  color: #dceaff;
+  font-size: 36px;
+  top: 45px;
+  right: 55px;
+}
+
+/* Etiqueta branca "🔧 Assistência especializada" */
+.tag {
+  position: absolute;
+  bottom: 28px;
+  right: 20px;
+  background: white;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 5px 25px #001b4e3d;
+}
+
+
+/* =============================================================
+   2. FAIXA DE BENEFÍCIOS
+   ============================================================= */
+.benefits {
+  background: white;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.benefits .wrap {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.benefit {
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+/* Quadradinho azul-claro com o símbolo ✓ ⌂ ◎ */
+.dot {
+  background: #eaf2ff;
+  color: var(--cor-principal);
+  border-radius: 12px;
+  padding: 9px;
+}
+
+
+/* =============================================================
+   3. TABELA DE PREÇOS
+   ============================================================= */
+.selector { background: var(--cor-fundo-claro); }
+
+/* --- Aviso "Tem Samsung, Motorola, Xiaomi ou outra marca?" --- */
+.aviso-marcas {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 18px;
+  padding: 10px 10px 10px 20px;
+  background: white;
+  border: 1px solid var(--cor-borda);
+  border-radius: 16px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.aviso-marcas .btn {
+  flex-shrink: 0;
+  font-size: 13px;
+  padding: 11px 16px;
+}
+
+/* --- Botões dos modelos ("iPhone 13" etc.) --- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 30px 0 25px;
+}
+
+.chip {
+  background: white;
+  color: #1a2e4c;
+  border: 1px solid #dce5f3;
+  border-radius: 999px;
+  padding: 11px 17px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Modelo selecionado */
+.chip.active {
+  background: var(--cor-principal);
+  color: white;
+  border-color: var(--cor-principal);
+}
+
+/* --- Lista de seleção de modelo (só aparece no celular) --- */
+.seletor-celular {
+  display: none;
+  margin: 26px 0 20px;
+}
+
+.seletor-celular label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.seletor-celular select {
+  width: 100%;
+  padding: 15px 46px 15px 16px;
+  border: 1px solid #b5c8eb;
+  border-radius: 14px;
+  background-color: white;
+  /* Setinha azul ▾ desenhada à direita */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%231256c8' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  color: var(--cor-texto);
+  font: inherit;
+  font-size: 16px; /* 16px evita o zoom automático do iPhone ao tocar */
+  font-weight: 700;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.seletor-celular select:focus-visible {
+  outline: 3px solid #7aa7f0;
+  outline-offset: 2px;
+}
+
+/* --- Caixa branca com os serviços --- */
+.panel {
+  background: white;
+  border: 1px solid var(--cor-borda);
+  border-radius: 24px;
+  padding: 26px;
+  box-shadow: 0 12px 40px #143c7820;
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* Botões do painel: "Outro problema?" + "⚡ Urgente" */
+.panel-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.panel h3 {
+  font-size: 25px;
+  margin: 0;
+}
+
+/* Grade com 3 cards por linha */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* --- Card de cada serviço --- */
+.service {
+  border: 1px solid var(--cor-borda);
+  padding: 20px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  min-height: 230px;
+}
+
+.service h4 {
+  font-size: 18px;
+  margin: 0 0 12px;
+}
+
+.service .muted {
+  font-size: 13px;
+  color: var(--cor-texto-suave);
+  line-height: 1.6;
+}
+
+/* Valor grande ("R$ 899,00") */
+.price {
+  font-size: 27px;
+  font-weight: 850;
+  margin: 14px 0 3px;
+}
+
+/* Versão menor, para "Sob consulta" */
+.price--consulta { font-size: 20px; }
+
+/* Texto pequeno ("em até 12x sem juros • Pix: ...") */
+.small {
+  font-size: 12px;
+  color: var(--cor-texto-suave);
+}
+
+/* Botão "Solicitar orçamento" fica sempre no pé do card */
+.service .btn {
+  margin-top: auto;
+  font-size: 13px;
+  padding: 13px;
+}
+
+/* =============================================================
+   ORÇAMENTO EM 4 ETAPAS
+   ============================================================= */
+
+/* Garante que itens escondidos pelo site fiquem escondidos mesmo */
+[hidden] { display: none !important; }
+
+/* --- Indicador ① Modelo ─ ② Defeitos ─ ③ Peças ─ ④ Resumo --- */
+.etapas {
+  list-style: none;
+  padding: 0;
+  margin: 30px auto 22px;
+  max-width: 640px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+}
+
+/* Linha que liga as etapas */
+.etapas::before {
+  content: '';
+  position: absolute;
+  top: 17px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 2px;
+  background: #dce5f3;
+}
+
+.etapas button {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--cor-texto-suave);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.etapas button:disabled { cursor: default; opacity: .55; }
+
+.etapa-num {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: white;
+  border: 2px solid #dce5f3;
+  font-size: 14px;
+}
+
+.etapas .atual button { color: var(--cor-texto); }
+.etapas .atual .etapa-num { background: var(--cor-principal); border-color: var(--cor-principal); color: white; }
+.etapas .feita .etapa-num { background: #eaf2ff; border-color: var(--cor-principal); color: var(--cor-principal); }
+
+/* Texto de ajuda no início de cada etapa */
+.etapa-dica {
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: var(--cor-texto-suave);
+}
+
+/* Na etapa ① os botões de modelo ficam dentro do painel */
+#etapa1 .chips { margin: 0; }
+
+/* --- Etapa ②: card de defeito marcável --- */
+.service--opcao {
+  position: relative;
+  cursor: pointer;
+  transition: border-color .15s, box-shadow .15s;
+}
+
+/* A caixinha de marcar fica invisível, mas funciona no teclado */
+.service-check {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.service--opcao:has(.service-check:focus-visible) {
+  outline: 3px solid #7aa7f0;
+  outline-offset: 2px;
+}
+
+.service--opcao.marcado {
+  border-color: var(--cor-principal);
+  box-shadow: 0 0 0 1px var(--cor-principal);
+  background: #f7faff;
+}
+
+/* "A partir de" logo acima do preço */
+.a-partir { margin-top: 12px; }
+.price--a-partir { margin-top: 0; }
+
+/* "+ Selecionar" / "✓ Selecionado" no pé do card */
+.service-marcar {
+  margin-top: auto;
+  padding: 13px;
+  border-radius: var(--raio-botao);
+  border: 1px solid #b5c8eb;
+  color: var(--cor-principal);
+  font-size: 13px;
+  font-weight: 750;
+  text-align: center;
+}
+
+.service--opcao.marcado .service-marcar {
+  background: var(--cor-principal);
+  border-color: var(--cor-principal);
+  color: white;
+}
+
+/* --- Etapa ③: escolha de peças --- */
+.pecas {
+  display: grid;
+  gap: 16px;
+}
+
+.peca-grupo {
+  margin: 0;
+  padding: 18px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 18px;
+}
+
+/* Título do grupo ("Troca de tela") dentro da caixa, não em cima da borda */
+.peca-grupo-titulo {
+  float: left;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 12px;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.peca-grupo-titulo + * { clear: both; }
+.peca-opcao + .peca-opcao { margin-top: 10px; }
+
+.peca-grupo--sem .muted { margin: 0; font-size: 14px; color: var(--cor-texto-suave); }
+
+.peca-opcao {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid #dce5f3;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.peca-opcao.marcada {
+  border-color: var(--cor-principal);
+  box-shadow: 0 0 0 1px var(--cor-principal);
+  background: #f7faff;
+}
+
+.peca-opcao input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  flex-shrink: 0;
+  accent-color: var(--cor-principal);
+}
+
+.peca-texto { flex: 1; display: grid; gap: 3px; }
+.peca-nome { font-weight: 800; }
+
+/* Etiqueta "Recomendável" ao lado do nome da peça */
+.peca-selo {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: #e6f6ec;
+  color: #11683c;
+  font-size: 12px;
+  font-weight: 800;
+  vertical-align: 1px;
+  white-space: nowrap;
+}
+.peca-desc { font-size: 13px; color: var(--cor-texto-suave); line-height: 1.5; }
+
+.peca-valor {
+  display: grid;
+  justify-items: end;
+  gap: 2px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.peca-valor b { font-size: 18px; }
+.peca-consulta { font-size: 15px !important; color: var(--cor-texto-suave); }
+
+/* Aviso curto embaixo do título do serviço (ex.: tela sem mensagem) */
+.peca-nota {
+  margin: -4px 0 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #eaf2ff;
+  color: #1a3a6e;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* Botão "ⓘ O que é o histórico de peças?" e a explicação */
+.botao-ajuda {
+  clear: both;
+  display: inline-flex;
+  margin: -4px 0 12px;
+  padding: 7px 12px;
+  background: #eaf2ff;
+  color: var(--cor-principal);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.ajuda-texto {
+  margin-bottom: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--cor-fundo-claro);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.ajuda-texto p { margin: 0 0 8px; }
+.ajuda-texto p:last-child { margin-bottom: 0; }
+
+/* Caixa "⚠️ Atenção: Estou ciente…" (ex.: bateria sem mensagem) */
+.confirmacao {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-top: 12px;
+  padding: 14px 16px;
+  border: 1px solid #f5c26b;
+  border-radius: 14px;
+  background: #fff8eb;
+  font-size: 14px;
+  line-height: 1.55;
+  cursor: pointer;
+}
+
+.confirmacao input {
+  width: 20px;
+  height: 20px;
+  margin: 1px 0 0;
+  flex-shrink: 0;
+  accent-color: var(--cor-urgente);
+}
+
+.confirmacao.ok { border-color: #8fd1ad; background: #effaf3; }
+
+/* --- Etapa ④: resumo --- */
+.resumo-alerta {
+  font-size: 12px;
+  font-weight: 700;
+  color: #9a5b00;
+}
+
+.resumo-linha {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 8px 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.resumo-modelo { grid-template-columns: 1fr auto; }
+
+.resumo-item { display: grid; gap: 3px; }
+.resumo-item b { font-size: 17px; }
+.resumo-sub { font-size: 13px; color: var(--cor-texto-suave); }
+
+.resumo-valor { display: grid; justify-items: end; gap: 2px; }
+.resumo-valor b { font-size: 18px; }
+
+.resumo-acoes { display: flex; gap: 14px; justify-content: flex-end; }
+
+/* Botões em forma de link: "Alterar", "Trocar peça", "Remover" */
+.link-acao {
+  padding: 6px 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  color: var(--cor-principal);
+  font-size: 13px;
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.link-remover { color: #b42318; }
+.link-adicionar { margin: 14px 0 4px; font-size: 14px; }
+
+.resumo-total {
+  margin-top: 14px;
+  padding: 18px;
+  border-radius: 16px;
+  background: var(--cor-fundo-claro);
+  display: grid;
+  gap: 8px;
+}
+
+.resumo-total > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.resumo-total b { font-size: 20px; }
+.resumo-total-pix b { color: var(--cor-whatsapp); }
+.resumo-total .small { margin: 0; }
+
+/* Botão verde "Enviar orçamento pelo WhatsApp" */
+.btn-enviar {
+  width: 100%;
+  margin-top: 18px;
+  background: var(--cor-whatsapp);
+  font-size: 16px;
+  padding: 17px 20px;
+}
+
+.resumo-aviso { margin: 10px 0 0; text-align: center; }
+
+/* --- Botões "← Voltar" e "Próximo →" --- */
+.etapa-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.etapa-info {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--cor-texto-suave);
+}
+
+#btnAvancar { margin-left: auto; }
+
+/* "Outro problema?" embaixo do painel — só aparece no celular */
+.link-outro {
+  display: none;
+  margin-top: 16px;
+  text-align: center;
+  color: var(--cor-principal);
+  font-size: 14px;
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+#btnAvancar:disabled { opacity: .45; cursor: not-allowed; }
+
+/* Texto pequeno de aviso abaixo dos cards */
+.disclaimer {
+  font-size: 12px;
+  color: #67758b;
+  margin-top: 17px;
+}
+
+
+/* =============================================================
+   4. DIFERENCIAIS
+   ============================================================= */
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+  margin-top: 32px;
+}
+
+.feature {
+  border: 1px solid var(--cor-borda);
+  border-radius: 22px;
+  padding: 25px;
+}
+
+.feature b {
+  display: block;
+  margin: 14px 0 9px;
+  font-size: 19px;
+}
+
+.feature p {
+  color: var(--cor-texto-suave);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* Quadrado com o emoji (🚚 🛠 💬) */
+.icon {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: var(--cor-fundo-icone);
+  border-radius: 12px;
+  font-size: 23px;
+}
+
+
+/* =============================================================
+   5. DÚVIDAS FREQUENTES
+   ============================================================= */
+.duvidas { background: var(--cor-fundo-claro); }
+
+.duvidas-lista {
+  max-width: 780px;
+  margin: 30px auto 0;
+  display: grid;
+  gap: 12px;
+}
+
+.duvidas details {
+  background: white;
+  border: 1px solid var(--cor-borda);
+  border-radius: 16px;
+}
+
+/* A pergunta (clicável) */
+.duvidas summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  font-weight: 750;
+  cursor: pointer;
+  list-style: none;
+}
+
+.duvidas summary::-webkit-details-marker { display: none; }
+
+/* Sinal "+" que vira "−" quando a resposta está aberta */
+.duvidas summary::after {
+  content: '+';
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--cor-fundo-icone);
+  color: var(--cor-principal);
+  font-size: 18px;
+}
+
+.duvidas details[open] summary::after { content: '−'; }
+.duvidas details[open] { border-color: #b5c8eb; }
+
+.duvidas summary:focus-visible {
+  outline: 3px solid #7aa7f0;
+  outline-offset: 2px;
+  border-radius: 16px;
+}
+
+/* A resposta */
+.duvidas details p {
+  margin: 0;
+  padding: 0 20px 18px;
+  color: var(--cor-texto-suave);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+/* "Não encontrou sua dúvida?" + botão */
+.duvidas-whatsapp {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px 16px;
+  margin-top: 26px;
+  font-weight: 700;
+}
+
+
+/* =============================================================
+   6. CHAMADA FINAL / ENDEREÇO
+   ============================================================= */
+.bottom {
+  background: var(--cor-fundo-escuro);
+  color: white;
+}
+
+.bottom .wrap {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.bottom h2 {
+  font-size: 38px;
+  letter-spacing: -1px;
+}
+
+.bottom p {
+  color: var(--cor-texto-escuro);
+  line-height: 1.7;
+}
+
+
+/* =============================================================
+   RODAPÉ
+   ============================================================= */
+footer {
+  background: var(--cor-rodape);
+  color: var(--cor-texto-rodape);
+  padding: 30px 0;
+  font-size: 13px;
+}
+
+footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Logo branca do rodapé (img/logo-branca.png) */
+.rodape-marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rodape-marca img {
+  display: block;
+  height: 34px;
+  width: auto;
+}
+
+
+/* =============================================================
+   BOTÃO FLUTUANTE DO WHATSAPP
+   ============================================================= */
+.float {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  background: var(--cor-whatsapp);
+  z-index: 9;
+  border-radius: 999px;
+  box-shadow: 0 8px 27px #0003;
+}
+
+
+/* =============================================================
+   CELULAR (telas com até 800px de largura)
+   Tudo aqui só vale em telas pequenas.
+   ============================================================= */
+@media (max-width: 800px) {
+  /* --- Cabeçalho --- */
+  header .wrap { height: 68px; }
+
+  .logo img { height: 38px; }
+
+  .btn-topo {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  .so-computador { display: none; }
+  .so-celular { display: inline; }
+  .botao-menu { display: inline-flex; }
+
+  /* Menu vira uma lista que desce abaixo do cabeçalho */
+  nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 6px var(--margem-lateral) 14px;
+    background: white;
+    border-bottom: 1px solid var(--cor-borda);
+    box-shadow: 0 14px 30px #143c7818;
+    font-size: 16px;
+  }
+
+  nav.aberto { display: flex; }
+
+  nav a {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--cor-borda);
+  }
+
+  nav a:last-child { border-bottom: 0; }
+
+  /* Item "⚡ Reparo urgente" do menu, em laranja */
+  nav .menu-urgente { color: var(--cor-urgente); }
+
+  /* Celulares estreitos (até 380px): logo um pouco menor */
+  @media (max-width: 380px) {
+    header .wrap { padding: 0 16px; gap: 10px; }
+    .logo img { height: 33px; }
+  }
+
+  /* Celulares muito estreitos (até 340px): cabeçalho mais compacto */
+  @media (max-width: 340px) {
+    header .wrap { gap: 8px; padding: 0 14px; }
+    .logo img { height: 31px; }
+    .header-acoes { gap: 6px; }
+    .btn-topo { padding: 11px 12px; font-size: 13px; }
+    .botao-menu { width: 42px; height: 42px; }
+  }
+
+  /* Seletor de modelo: troca os 35 botões pela lista de seleção */
+  .chips { display: none; }
+  .seletor-celular { display: block; margin: 0; }
+
+  /* Painel limpo no celular: sem botões no topo,
+     "Outro problema?" vai para baixo como link */
+  .panel-acoes { display: none; }
+  .link-outro { display: block; }
+
+  /* Orçamento em etapas */
+  .etapas { margin: 26px 0 18px; }
+  .etapas button { font-size: 12px; }
+
+  .peca-opcao { align-items: flex-start; flex-wrap: wrap; }
+  .peca-texto { flex-basis: calc(100% - 40px); }
+  .peca-valor { justify-items: start; text-align: left; padding-left: 34px; }
+
+  .resumo-linha { grid-template-columns: 1fr auto; }
+  .resumo-acoes { grid-column: 1 / -1; justify-content: flex-start; }
+
+  .etapa-nav { flex-wrap: wrap; }
+  .etapa-info { order: -1; flex-basis: 100%; }
+  .etapa-nav .btn { flex: 1; padding: 14px 12px; font-size: 15px; white-space: nowrap; }
+  .btn-enviar { font-size: 15px; padding: 16px 12px; }
+
+  /* Títulos não ficam escondidos atrás do cabeçalho (mais baixo no celular) */
+  section[id] { scroll-margin-top: 68px; }
+
+  /* Espaço no fim do rodapé para o botão verde não cobrir o texto */
+  footer { padding-bottom: 90px; }
+
+  /* --- Resto da página --- */
+
+  .hero { padding: 55px 0; }
+
+  /* Colunas viram uma coluna só */
+  .hero .wrap,
+  .bottom .wrap { grid-template-columns: 1fr; }
+
+  .hero-art { min-height: 265px; }
+
+  .benefits .wrap,
+  .grid,
+  .features { grid-template-columns: 1fr; }
+
+  .panel { padding: 17px; }
+
+  /* Aviso de outras marcas: texto em cima, botão embaixo */
+  .aviso-marcas {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .panel-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  section { padding: 58px 0; }
+
+  .hero h1 { letter-spacing: -1.5px; }
+
+  .bottom h2 { font-size: 30px; }
+
+  .float {
+    font-size: 13px;
+    padding: 13px;
+  }
+}

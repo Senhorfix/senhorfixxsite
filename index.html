@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- TEXTO QUE APARECE NO GOOGLE (abaixo do título do site) -->
+  <meta name="description" content="Assistência especializada em celulares em Imperatriz. Troca de tela, bateria, conector e outros reparos. Senhor Fix no Imperial Shopping.">
+
+  <!-- TÍTULO DA ABA DO NAVEGADOR E DO GOOGLE -->
+  <title>Senhor Fix | Assistência Especializada em Imperatriz</title>
+
+  <!-- ÍCONE DA ABA DO NAVEGADOR e ícone ao salvar o site na tela do iPhone -->
+  <link rel="icon" href="img/favicon-64.png" type="image/png">
+  <link rel="apple-touch-icon" href="img/icone-180.png">
+
+  <!-- PRÉVIA AO COMPARTILHAR O LINK (WhatsApp, Instagram, Facebook)
+       A imagem já está pronta em img/compartilhar.png.
+       Quando o site tiver endereço (domínio), tire os sinais <!- - e - -> da linha abaixo
+       e troque SEU-DOMINIO pelo endereço real (o WhatsApp exige o endereço completo):
+       <meta property="og:image" content="https://SEU-DOMINIO/img/compartilhar.png"> -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Senhor Fix">
+  <meta property="og:title" content="Senhor Fix | Assistência Especializada em Imperatriz">
+  <meta property="og:description" content="Troca de tela, bateria, conector e outros reparos. Imperial Shopping, Imperatriz – MA. Orçamento pelo WhatsApp.">
+
+  <!-- FONTE INTER (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap">
+
+  <!-- Todo o visual do site (cores, fontes, tamanhos) fica neste arquivo -->
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+  <!-- ======================================================
+       CABEÇALHO (fica fixo no topo ao rolar a página)
+       ====================================================== -->
+  <header>
+    <div class="wrap">
+      <!-- LOGO (imagem em img/logo.png) -->
+      <a class="logo" href="#inicio"><img src="img/logo.png" alt="Senhor Fix" width="531" height="145"></a>
+
+      <!-- MENU (no celular, abre pelo botão ☰) -->
+      <nav id="menu">
+        <a href="#precos">Preços</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#duvidas">Dúvidas</a>
+        <a href="#local">Onde estamos</a>
+        <!-- Só aparece no menu do celular. Link criado em js/main.js -->
+        <a class="so-celular menu-urgente" id="menuUrgenteWa" target="_blank" rel="noopener"><span aria-hidden="true">⚡</span> Reparo urgente ↗</a>
+      </nav>
+
+      <div class="header-acoes">
+        <!-- BOTÃO DO CANTO DIREITO: leva até a seção de preços.
+             No celular aparece só "Orçamento" para caber na tela. -->
+        <a class="btn btn-topo" href="#precos">
+          <span class="so-computador">Solicitar orçamento</span>
+          <span class="so-celular">Orçamento</span> →
+        </a>
+
+        <!-- BOTÃO ☰ DO MENU (só aparece no celular) -->
+        <button class="botao-menu" id="botaoMenu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ======================================================
+         1. ABERTURA (HERO) — primeira coisa que o visitante vê
+         ====================================================== -->
+    <section class="hero" id="inicio">
+      <div class="wrap">
+        <div>
+          <div class="eyebrow">Assistência especializada • Imperatriz, MA</div>
+          <!-- A parte dentro de <span class="destaque"> fica azul -->
+          <h1>Seu celular em boas mãos. <span class="destaque">Do início ao fim.</span></h1>
+          <p>Tela quebrada, bateria descarregando rápido ou problema para carregar? Conte com a Senhor Fix e solicite seu orçamento sem complicação.</p>
+          <div class="cta">
+            <a class="btn" href="#precos">Ver preços de reparos →</a>
+            <!-- BOTÃO DE REPARO URGENTE (laranja)
+                 Abre o WhatsApp com a mensagem de urgência,
+                 que fica em js/config.js (mensagens.urgente) -->
+            <a class="btn btn-urgente" id="urgenteWa" target="_blank" rel="noopener">
+              <span aria-hidden="true">⚡</span> Reparo urgente ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- ILUSTRAÇÃO DO CELULAR (desenhada só com CSS, não é imagem) -->
+        <div class="hero-art" role="img" aria-label="Ilustração de smartphone">
+          <div class="spark" aria-hidden="true">✦</div>
+          <div class="phone"></div>
+          <div class="tag">🔧 Assistência especializada</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         2. FAIXA DE BENEFÍCIOS (3 itens logo abaixo da abertura)
+         ====================================================== -->
+    <div class="benefits">
+      <div class="wrap">
+        <div class="benefit"><span class="dot" aria-hidden="true">✓</span> 6 meses de garantia em todos os serviços*</div>
+        <div class="benefit"><span class="dot" aria-hidden="true">⌂</span> Busca e entrega sob consulta</div>
+        <div class="benefit"><span class="dot" aria-hidden="true">◎</span> Imperial Shopping • Imperatriz</div>
+      </div>
+    </div>
+
+    <!-- ======================================================
+         3. ORÇAMENTO EM 4 ETAPAS
+         ① Modelo → ② Defeitos → ③ Peças → ④ Resumo
+         Tudo dentro do painel é criado automaticamente por js/main.js.
+         Para mudar PREÇOS e PEÇAS: abra js/precos.js
+         ====================================================== -->
+    <section class="selector" id="precos">
+      <div class="wrap">
+        <div class="center">
+          <div class="eyebrow">Orçamento fácil</div>
+          <h2 class="section-title">Monte seu orçamento</h2>
+          <p class="sub">Escolha o modelo, marque um ou mais defeitos e as peças. No final, revise tudo e envie pelo WhatsApp.</p>
+
+          <!-- AVISO PARA OUTRAS MARCAS (Samsung, Motorola etc.)
+               A mensagem do WhatsApp deste botão fica em js/config.js -->
+          <div class="aviso-marcas">
+            <span>Tem <b>Samsung, Motorola, Xiaomi</b> ou outra marca? Fale com a gente pelo WhatsApp para um orçamento.</span>
+            <a class="btn" id="outrasMarcasWa" target="_blank" rel="noopener">Falar no WhatsApp ↗</a>
+          </div>
+        </div>
+
+        <!-- INDICADOR DAS 4 ETAPAS (gerado pelo JS) -->
+        <ol class="etapas" id="etapas" aria-label="Etapas do orçamento"></ol>
+
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <!-- "Etapa 1 de 4 • iPhone 13" e o título da etapa (preenchidos pelo JS) -->
+              <div class="eyebrow" id="etapaRotulo"></div>
+              <h3 id="etapaTitulo" tabindex="-1"></h3>
+            </div>
+            <div class="panel-acoes">
+              <a class="btn outline" id="otherWa" target="_blank" rel="noopener">Outro problema? Consulte →</a>
+              <!-- Urgente com o modelo escolhido na mensagem (js/config.js → urgenteModelo) -->
+              <a class="btn btn-urgente" id="panelUrgenteWa" target="_blank" rel="noopener"><span aria-hidden="true">⚡</span> Urgente ↗</a>
+            </div>
+          </div>
+
+          <!-- ETAPA 1 — MODELO -->
+          <div class="etapa" id="etapa1">
+            <!-- COMPUTADOR: botões "iPhone 7", "iPhone 8"... (gerados pelo JS) -->
+            <div id="chips" class="chips" role="group" aria-label="Modelos de iPhone"></div>
+
+            <!-- CELULAR: lista de seleção com os mesmos modelos (gerada pelo JS) -->
+            <div class="seletor-celular">
+              <label for="listaModelos">Escolha o modelo do seu iPhone</label>
+              <select id="listaModelos"></select>
+            </div>
+          </div>
+
+          <!-- ETAPA 2 — DEFEITOS (cards marcáveis, gerados pelo JS) -->
+          <div class="etapa" id="etapa2" hidden>
+            <p class="etapa-dica">Marque todos os defeitos do aparelho. Você pode escolher mais de um.</p>
+            <div class="grid" id="services"></div>
+          </div>
+
+          <!-- ETAPA 3 — PEÇAS (opções de cada defeito, geradas pelo JS) -->
+          <div class="etapa" id="etapa3" hidden>
+            <p class="etapa-dica">Escolha o tipo de peça para cada reparo. O valor muda conforme a peça.</p>
+            <div class="pecas" id="listaPecas"></div>
+          </div>
+
+          <!-- ETAPA 4 — RESUMO (gerado pelo JS) -->
+          <div class="etapa" id="etapa4" hidden>
+            <div id="resumo"></div>
+          </div>
+
+          <!-- BOTÕES "← Voltar" E "Próximo →" -->
+          <div class="etapa-nav">
+            <button class="btn outline" id="btnVoltar" type="button">← Voltar</button>
+            <span class="etapa-info" id="etapaInfo" aria-live="polite"></span>
+            <button class="btn" id="btnAvancar" type="button">Próximo →</button>
+          </div>
+
+          <!-- CELULAR: "Outro problema?" fica aqui embaixo, discreto
+               (no computador ele fica no topo do painel) -->
+          <a class="link-outro" id="otherWaCelular" target="_blank" rel="noopener">Outro problema? Fale com a equipe →</a>
+
+          <!-- TEXTO PEQUENO DE AVISO abaixo dos cards -->
+          <div class="disclaimer">*Todos os serviços têm 6 meses de garantia. A garantia de telas não cobre aparelhos com riscos, ralados, trincos ou danos causados após o reparo. Valores e disponibilidade podem mudar sem aviso prévio; confirme pelo WhatsApp. À vista/Pix: a partir de 12% de desconto sobre o valor parcelado indicado.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         4. DIFERENCIAIS ("Por que escolher a Senhor Fix?")
+         ====================================================== -->
+    <section id="servicos">
+      <div class="wrap">
+        <div class="center">
+          <div class="eyebrow">Por que escolher a Senhor Fix?</div>
+          <h2 class="section-title">Cuidado com cada detalhe.</h2>
+          <p class="sub">Mais praticidade, atendimento próximo e reparos explicados de forma clara.</p>
+        </div>
+
+        <div class="features">
+          <article class="feature">
+            <span class="icon" aria-hidden="true">🚚</span>
+            <b>Busca e entrega</b>
+            <p>Consulte a disponibilidade para retirada e devolução do aparelho no seu endereço.</p>
+          </article>
+          <article class="feature">
+            <span class="icon" aria-hidden="true">🛠</span>
+            <b>Serviços especializados</b>
+            <p>Troca de tela, bateria, vidro traseiro, conector de carga, placa, software e muito mais.</p>
+          </article>
+          <article class="feature">
+            <span class="icon" aria-hidden="true">💬</span>
+            <b>Orçamento pelo WhatsApp</b>
+            <p>Escolha seu modelo e fale diretamente com a equipe sobre o problema.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         5. DÚVIDAS FREQUENTES
+         Cada pergunta é um bloco <details>. Para adicionar uma
+         pergunta, copie um bloco inteiro (de <details> até </details>)
+         e troque o texto. Mantenha poucas perguntas.
+         ====================================================== -->
+    <section class="duvidas" id="duvidas">
+      <div class="wrap">
+        <div class="center">
+          <div class="eyebrow">Dúvidas frequentes</div>
+          <h2 class="section-title">Perguntas comuns</h2>
+        </div>
+
+        <div class="duvidas-lista">
+          <details>
+            <summary>Qual é a garantia dos reparos?</summary>
+            <p>Todos os serviços têm <b>6 meses de garantia</b>. A garantia de telas não cobre aparelhos com riscos, ralados, trincos ou danos causados após o reparo.</p>
+          </details>
+
+          <details>
+            <summary>Quais são as formas de pagamento?</summary>
+            <p>Os valores podem ser parcelados em <b>até 12x sem juros</b>. Pagando à vista, você tem <b>12% de desconto</b>.</p>
+          </details>
+
+          <details>
+            <summary>Vou perder meus dados (fotos, conversas)?</summary>
+            <p>Na maioria dos reparos, não. A exceção é a <b>bateria sem mensagem</b>, que exige formatar o aparelho por completo. Em qualquer caso, recomendamos fazer backup antes de entregar o aparelho.</p>
+          </details>
+
+          <details>
+            <summary>Quanto tempo leva o reparo?</summary>
+            <p>Depende do serviço e da disponibilidade da peça. O prazo é informado junto com o orçamento, pelo WhatsApp.</p>
+          </details>
+
+          <details>
+            <summary>O que é a mensagem no histórico de peças do iPhone?</summary>
+            <p>Desde o iOS 15.2, o iPhone mostra em <b>Ajustes &gt; Geral &gt; Sobre</b> o "Histórico de peças e serviço". Quando algumas peças são trocadas, aparece ali uma mensagem sobre a peça instalada, como "Peça desconhecida". Na escolha da bateria, você vê qual mensagem cada opção mostra. A troca de tela é feita sem mensagem de peça substituída quando a tela atual ainda é a original do aparelho.</p>
+          </details>
+
+          <details>
+            <summary>Vocês buscam e entregam o aparelho?</summary>
+            <p>Sim, sob consulta. Fale com a gente pelo WhatsApp para verificar a disponibilidade no seu endereço. Também atendemos no Imperial Shopping, 1º piso, em Imperatriz – MA.</p>
+          </details>
+        </div>
+
+        <!-- Dúvida que não está na lista → WhatsApp (mensagem em js/config.js → duvida) -->
+        <div class="duvidas-whatsapp">
+          <span>Não encontrou sua dúvida?</span>
+          <a class="btn outline" id="duvidaWa" target="_blank" rel="noopener">Pergunte pelo WhatsApp ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         6. CHAMADA FINAL / ENDEREÇO (faixa azul-escura)
+         ====================================================== -->
+    <section class="bottom" id="local">
+      <div class="wrap">
+        <div>
+          <div class="eyebrow eyebrow--claro">Estamos em Imperatriz</div>
+          <h2>Seu próximo reparo começa aqui.</h2>
+          <p>Imperial Shopping, 1º piso, Imperatriz – MA. Solicite informações sobre horários, valores e disponibilidade do serviço antes de sair de casa.</p>
+        </div>
+        <div>
+          <a class="btn" id="endWa" target="_blank" rel="noopener">Pedir orçamento pelo WhatsApp →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================
+       RODAPÉ
+       ====================================================== -->
+  <footer>
+    <div class="wrap">
+      <!-- Logo branca para o fundo escuro (img/logo-branca.png) -->
+      <div class="rodape-marca"><img src="img/logo-branca.png" alt="Senhor Fix" width="531" height="145" loading="lazy"> Assistência especializada</div>
+      <div>Imperial Shopping • Imperatriz - MA</div>
+      <div>© 2026 Senhor Fix</div>
+    </div>
+  </footer>
+
+  <!-- BOTÃO VERDE FLUTUANTE DO WHATSAPP (canto inferior direito) -->
+  <a class="btn float" id="floatWa" target="_blank" rel="noopener">WhatsApp ↗</a>
+
+  <!-- ======================================================
+       SCRIPTS — a ordem importa: configurações primeiro.
+       ====================================================== -->
+  <script src="js/config.js"></script>   <!-- telefone e mensagens -->
+  <script src="js/precos.js"></script>   <!-- modelos, serviços e preços -->
+  <script src="js/main.js"></script>     <!-- lógica (raramente precisa mexer) -->
+</body>
+</html>
